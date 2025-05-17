@@ -13,7 +13,7 @@ class Current_dataController extends Controller
         $user_id = auth()->id();
         $current_data = Air_data::where('user_id',$user_id)->latest()->first();
         if (empty($current_data)){
-            return view('dashboard',[
+            return view('Dashboard',[
                 'check_data' => false
             ]);
         }
