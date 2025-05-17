@@ -1,0 +1,119 @@
+/* Custom styles for Air Quality Dashboard */
+
+/* General styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Card styles */
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Reading values */
+.reading-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+/* Status indicators */
+.reading-status {
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.reading-status.good {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.reading-status.moderate {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.reading-status.unhealthy {
+    background-color: #ffe5d0;
+    color: #fd7e14;
+}
+
+.reading-status.very-unhealthy {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.reading-status.hazardous {
+    background-color: #e0d0e6;
+    color: #6f42c1;
+}
+
+/* AQI meter */
+.aqi-meter {
+    position: relative;
+    margin: 30px 0;
+}
+
+.aqi-marker {
+    position: absolute;
+    top: -25px;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100px;
+    background-color: #000;
+}
+
+.aqi-value {
+    position: absolute;
+    top: -45px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #343a40;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 15px;
+    font-weight: bold;
+}
+
+/* Custom progress bar colors */
+.bg-orange {
+    background-color: #fd7e14 !important;
+}
+
+.bg-purple {
+    background-color: #6f42c1 !important;
+}
+
+/* Chart container */
+.chart-container {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Table styles */
+.table th {
+    background-color: #f8f9fa;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .reading-value {
+        font-size: 2rem;
+    }
+    
+    .aqi-legend .badge {
+        font-size: 0.65rem;
+        padding: 0.35em 0.5em;
+    }
+}
