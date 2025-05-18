@@ -18,6 +18,8 @@ class ReceiveController extends Controller
             $data->CO = $request['co'];
             $data->O3 = $request['o3'];
             $data->PM2_5 = $request['dust'];
+            $data->CO2 = $request['co2'];
+            $data->TVOC = $request['tvoc'];
             $data->aqi = $request['aqi'];
             $data->save();
             return response()->json([
