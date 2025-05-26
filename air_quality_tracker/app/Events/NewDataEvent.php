@@ -31,7 +31,7 @@ class NewDataEvent implements ShouldBroadcast
     public function broadcastOn(): array
     {
         return [
-            new PrivateChannel('air-quality'),
+            new Channel('air-quality'),
         ];
     }
     public function broadcastAs()

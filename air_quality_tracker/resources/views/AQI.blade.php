@@ -4,16 +4,16 @@
             <div class="d-flex align-items-center mb-3">
                 <h2 class="card-title mb-0 fs-4 fw-bold">
                     <i class="bi bi-speedometer2 me-2"></i>Air Quality Index (AQI)
-                </h2>
+                </h2><br><br>
                 <div class="ms-auto">
-                    <span
+                    <span id="aqi-badge-aqi"
                         class="badge fs-6 px-3 py-2 
-                        @if ($AQI <= 50) bg-success 
-                        @elseif($AQI <= 100) bg-warning 
-                        @elseif($AQI <= 150) bg-orange 
-                        @elseif($AQI <= 200) bg-danger 
-                        @elseif($AQI <= 300) bg-purple 
-                        @else bg-maroon @endif">
+                            @if ($AQI <= 50) bg-success 
+                            @elseif($AQI <= 100) bg-warning 
+                            @elseif($AQI <= 150) bg-orange 
+                            @elseif($AQI <= 200) bg-danger 
+                            @elseif($AQI <= 300) bg-purple 
+                            @else bg-maroon @endif">
                         AQI: {{ $AQI }}
                     </span>
                 </div>
@@ -28,9 +28,9 @@
                     <div class="progress-bar" style="background-color: purple; width: 20%;">201-300</div>
                     <div class="progress-bar" style="background-color: maroon; width: 40%;">301-500</div>
                 </div>
-                <div class="aqi-marker position-absolute" id="aqi-marker"
+                <div class="aqi-marker" id="aqi-marker-aqi"
                     style="left: {{ min(($AQI * 100) / 500, 100) }}%;">
-                    <div class="aqi-value" id="aqi-value">{{ $AQI }}</div>
+                    <div class="aqi-value" id="aqi-value-aqi">{{ $AQI }}</div>
                 </div>
 
             </div>
@@ -82,16 +82,16 @@
                 </div>
             </div>
 
-            <div
+            <div id="aqi-info"
                 class="aqi-info mt-4 p-3 rounded-3 
-    @if ($AQI <= 50) bg-success bg-opacity-10 border border-success border-opacity-25 text-dark
-    @elseif($AQI <= 100) bg-warning bg-opacity-10 border border-warning border-opacity-25 text-dark
-    @elseif($AQI <= 150) bg-orange bg-opacity-10 border border-warning border-opacity-25 text-dark
-    @elseif($AQI <= 200) bg-danger bg-opacity-10 border border-danger border-opacity-25 text-dark
-    @elseif($AQI <= 300) bg-purple bg-opacity-10 border border-purple border-opacity-25 text-white
-    @else bg-maroon bg-opacity-10 border border-dark border-opacity-25 text-white @endif">
+                @if ($AQI <= 50) bg-success bg-opacity-10 border border-success border-opacity-25 text-dark
+                @elseif($AQI <= 100) bg-warning bg-opacity-10 border border-warning border-opacity-25 text-dark
+                @elseif($AQI <= 150) bg-orange bg-opacity-10 border border-warning border-opacity-25 text-dark
+                @elseif($AQI <= 200) bg-danger bg-opacity-10 border border-danger border-opacity-25 text-dark
+                @elseif($AQI <= 300) bg-purple bg-opacity-10 border border-purple border-opacity-25 text-white
+                @else bg-maroon bg-opacity-10 border border-dark border-opacity-25 text-white @endif">
 
-                <h5 class="mb-2 fw-semibold">
+                <h5 id="aqi-title" class="mb-2 fw-semibold">
                     <i class="bi bi-info-circle me-2"></i>
                     @if ($AQI <= 50)
                         Good Air Quality
@@ -108,7 +108,7 @@
                     @endif
                 </h5>
 
-                <p class="mb-0">
+                <p id="aqi-description" class="mb-0">
                     @if ($AQI <= 50)
                         Air quality is considered satisfactory, and air pollution poses little or no risk.
                     @elseif($AQI <= 100)
@@ -155,12 +155,24 @@
     .aqi-color.bg-maroon {
         background-color: maroon;
     }
-
+.aqi-value {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #343a40;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 15px;
+    font-weight: bold;
+}
     .aqi-marker {
-        position: absolute;
-        top: -12px;
-        transform: translateX(-50%);
-        text-align: center;
-        font-weight: bold;
-    }
+    position: absolute;
+    top: -20px;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 35px;
+    background-color: #000;
+}
+
 </style>

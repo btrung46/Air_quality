@@ -24,7 +24,8 @@
                 </div>
                 <div class="metric-details">
                     <h5>Temperature</h5>
-                    <div class="metric-value" id='temperature'>{{ $current_dat->temperature }}<span class="unit">°C</span></div>
+                    <div class="metric-value" id='temperature'>{{ $current_dat->temperature }}<span
+                            class="unit">°C</span></div>
                 </div>
             </div>
         </div>
@@ -37,7 +38,8 @@
                 </div>
                 <div class="metric-details">
                     <h5>Humidity</h5>
-                    <div class="metric-value" id='humidity'>{{ $current_dat->humidity }}<span class="unit">%</span></div>
+                    <div class="metric-value" id='humidity'>{{ $current_dat->humidity }}<span class="unit">%</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -50,7 +52,8 @@
                 </div>
                 <div class="metric-details">
                     <h5>PM2.5</h5>
-                    <div class="metric-value" id='pm25'>{{ $current_dat->PM2_5 }}<span class="unit">μg/m³</span></div>
+                    <div class="metric-value" id='pm25'>{{ $current_dat->PM2_5 }}<span class="unit">μg/m³</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -79,7 +82,8 @@
                 </div>
                 <div class="metric-details">
                     <h5>Carbon Dioxide (CO<sub>2</sub>)</h5>
-                    <div class="metric-value" id='co2'>{{ $current_dat->CO2 }}<span class="unit">ppm</span></div>
+                    <div class="metric-value" id='co2'>{{ $current_dat->CO2 }}<span class="unit">ppm</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -105,7 +109,8 @@
                 </div>
                 <div class="metric-details">
                     <h5>TVOC</h5>
-                    <div class="metric-value"id='temperature'>{{ $current_dat->TVOC }}<span class="unit">ppb</span></div>
+                    <div class="metric-value"id='tvoc'>{{ $current_dat->TVOC }}<span class="unit">ppb</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -119,13 +124,13 @@
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <h4 class="mb-0 fw-bold">Data chart</h4>
                 <div class="mb-3">
-                <select id="chartTypeSelector" class="form-select w-auto">
-                    <option value="line">Line</option>
-                    <option value="bar">Bar</option>
-                </select>
+                    <select id="chartTypeSelector" class="form-select w-auto">
+                        <option value="line">Line</option>
+                        <option value="bar">Bar</option>
+                    </select>
+                </div>
             </div>
-            </div>
-            
+
 
             <ul class="nav nav-tabs card-header-tabs" id="chartTabs" role="tablist">
                 <li class="nav-item" role="presentation">
@@ -310,7 +315,9 @@
         </div>
     </div>
 </section>
-
+<script>
+  
+</script>
 <style>
     :root {
         --primary-color: #3498db;

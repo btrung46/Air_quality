@@ -1,27 +1,27 @@
 @extends('layout')
 @section('context')
-    @if ($check_data === false)
-        <section class="empty-state text-center my-5 py-5">
-            <div class="container">
-                <i class="bi bi-cloud-slash display-1 text-secondary mb-3"></i>
-                <h1 class="display-5 fw-bold text-secondary">Welcome to Air Quality Dashboard</h1>
-                <p class="lead text-muted mx-auto" style="max-width: 600px;">No data available at the moment. Please check
-                    back later or contact support if this issue persists.</p>
-                <button onclick="location.reload()" class="btn btn-primary mt-3">
-                    <i class="bi bi-arrow-clockwise me-2"></i>Refresh Data
-                </button>
+    @auth
+        @if ($check_data === false)
+            <section class="empty-state text-center my-5 py-5">
+                <div class="container">
+                    <i class="bi bi-cloud-slash display-1 text-secondary mb-3"></i>
+                    <h1 class="display-5 fw-bold text-secondary">Welcome to Air Quality Dashboard</h1>
+                    <p class="lead text-muted mx-auto" style="max-width: 600px;">No data available at the moment. Please check
+                        back later or contact support if this issue persists.</p>
+                    <button onclick="location.reload()" class="btn btn-primary mt-3">
+                        <i class="bi bi-arrow-clockwise me-2"></i>Refresh Data
+                    </button>
+                </div>
+            </section>
+        @else
+            <div>
+                @include('current_index')
+
+
+                @include('hourly_table')
             </div>
-        </section>
-    @else
-        <div>
-            @include('current_index')
-
-
-            @include('hourly_table')
-        </div>
-    @endif
-
-
+        @endif
+    @endauth
     <script>
         // Gắn sự kiện click vào mọi link bên trong .pagination (dù được render động hay không)
         document.addEventListener('click', function(event) {
@@ -41,14 +41,14 @@
     </script>
     @if ($check_data)
         <script>
+            setTimeout(() => {
+                
+                location.reload();
+            }, 20 * 60 * 1000);
+
             document.addEventListener('DOMContentLoaded', function() {
                 // Cấu hình mặc định cho Chart.js
-                Chart.defaults.font.family = "'Segoe UI', 'Helvetica Neue', Arial, sans-serif";
-                Chart.defaults.font.size = 12;
-                Chart.defaults.plugins.tooltip.padding = 10;
-                Chart.defaults.plugins.tooltip.cornerRadius = 6;
-                Chart.defaults.plugins.tooltip.titleFont.weight = 'bold';
-                Chart.defaults.plugins.legend.labels.usePointStyle = true;
+
 
                 // Khởi tạo đối tượng lưu trữ các biểu đồ
                 window.myCharts = {};
@@ -175,10 +175,12 @@
                             data: data,
                             backgroundColor: backgroundColor,
                             borderColor: borderColor,
-                            borderWidth: 3,
+                            borderWidth: 2,
                             tension: 0.3,
-                            pointRadius: chartType === 'line' ? 0 : 3,
-                            pointHoverRadius: chartType === 'line' ? 0 : 3,
+                            pointRadius: 2,
+                            pointHoverRadius: 3,
+
+
                         }]
                     },
                     options: {
@@ -361,6 +363,34 @@
             .aqi-label {
                 font-size: 0.8rem;
             }
+        }
+
+        .welcome-card {
+            transition: all 0.3s ease;
+        }
+
+        .welcome-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        .icon-wrapper {
+            transition: all 0.3s ease;
+        }
+
+        .welcome-card:hover .icon-wrapper {
+            transform: scale(1.05);
+        }
+
+        .feature-item {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background-color: rgba(13, 110, 253, 0.05);
+            transform: translateY(-3px);
         }
     </style>
 @endsection

@@ -113,4 +113,17 @@ class AuthController extends Controller
                     ? redirect()->route('login')->with('status', __($status))
                     : back()->withErrors(['email' => [__($status)]]);
     }
+    public function savePlayerId(Request $request)
+    {
+        $user = auth()->user();
+        $playerId = $request->player_id;
+
+        if ($playerId) {
+            User::updateOrCreate(
+                ['user_id' => $user->id],
+                ['player_id' => $playerId]
+            );
+        }
+        return response()->json(['status' => 'success']);
+    }
 }
