@@ -8,7 +8,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Chart.js -->
     @vite('resources/js/app.js')
-    @vite('resources/js/bootstrap.js')
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <!-- Custom CSS -->
@@ -31,31 +30,7 @@
             flex-shrink: 0;
         }
     </style>
-    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
-<script>
-  var OneSignal = window.OneSignal || [];
-  OneSignal.push(function() {
-    OneSignal.init({
-      appId: "14264129-0222-4ea9-8522-acb34a4209d7",
-    });
-
-    OneSignal.on('subscriptionChange', function (isSubscribed) {
-      if (isSubscribed) {
-        OneSignal.getUserId(function(playerId) {
-          // Gửi playerId về server qua AJAX
-          fetch('/save-player-id', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'X-CSRF-TOKEN': '{{ csrf_token() }}'
-            },
-            body: JSON.stringify({ player_id: playerId })
-          });
-        });
-      }
-    });
-  });
-</script>
+    
 
 </head>
 <body>
