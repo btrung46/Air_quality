@@ -26,24 +26,8 @@ class ReceiveController extends Controller
         $data->aqi = $request['aqi'];
         $data->save();
         event(new NewDataEvent($data));
-        $threshold = 150;
 
-        if ($request['aqi'] > $threshold) {
-            $user = User::find($request['user_id']);
-
-            if ($user && $user->player_id) {
-                $fields = [
-                    'app_id' => '14264129-0222-4ea9-8522-acb34a4209d7',
-                    'include_player_ids' => [$user->player_id],
-                    'headings' => ['en' => '⚠️ Cảnh báo chất lượng không khí'],
-                    'contents' => ['en' => "AQI hiện tại của bạn vượt ngưỡng an toàn!"],
-                ];
-                Http::withHeaders([
-                    'Authorization' => 'Basic os_v2_app_cqteckicejhktbjcvszuuqqj25pu5o3ht4oeaivpbnykg5c7guu6pc6co2gt7popcizblw2y2ulgyhquxwbmdalaljxjjpxf6hzgida',
-                    'Content-Type' => 'application/json',
-                ])->post('https://onesignal.com/api/v1/notifications', $fields);
-            }
-        }
+       
         return response()->json([
             'status' => 'success',
             'message' => 'Dữ liệu đã nhận!',
