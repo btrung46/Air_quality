@@ -20,6 +20,7 @@ import Echo from 'laravel-echo';
 import Pusher from 'pusher-js';
 window.Pusher = Pusher;
 
+
 window.Echo = new Echo({
     broadcaster: 'pusher',
     key: import.meta.env.VITE_PUSHER_APP_KEY,
@@ -98,8 +99,5 @@ window.Echo.channel('air-quality')
                 aqiTitle.innerHTML = `<i class="bi bi-info-circle me-2"></i> Hazardous Air Quality`;
                 aqiDescription.innerText = 'Health warnings of emergency conditions. The entire population is more likely to be affected.';
             }
-        }
-        if(e.data.aqi > 150) {
-            alert('Cảnh báo: Chất lượng không khí kém! AQI: ' + e.data.aqi);
         }
     });

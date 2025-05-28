@@ -15,7 +15,7 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
-    // Xử lý đăng ký
+  
     public function register(Request $request)
     {
         $request->validate([
@@ -24,7 +24,6 @@ class AuthController extends Controller
             'password' => 'required|min:6|confirmed',
         ]);
 
-        // Tạo user mới
         User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -34,13 +33,13 @@ class AuthController extends Controller
         return redirect()->route('login')->with('success', 'Acount created successfully!!! please login');
     }
 
-    // Hiển thị form đăng nhập
+   
     public function showLoginForm()
     {
         return view('auth.login');
     }
 
-    // Xử lý đăng nhập
+   
     public function login(Request $request)
     {
         $valid = request()->validate([
@@ -59,7 +58,7 @@ class AuthController extends Controller
         return redirect()->route('login')->withErrors(['password'=> 'something does not match']);
     }
 
-    // Đăng xuất
+    
     public function logout(Request $request)
     {
         Auth::logout();
