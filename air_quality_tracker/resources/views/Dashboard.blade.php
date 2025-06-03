@@ -48,9 +48,7 @@
         <!-- Ensure Chart.js is loaded before using it -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script>
-            window.Laravel = {
-                userId: @json(auth()->user()->id)
-            };
+            console.log(userId);
             setTimeout(() => {
                 location.reload();
             }, 20 * 60 * 1000);
