@@ -14,7 +14,7 @@ return [
     | To learn more: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
     |
     */
-    'paths' => ['broadcasting/auth', 'login', 'logout', 'sanctum/csrf-cookie', 'api/*'],
+    'paths' => ['broadcasting/auth', 'login', 'logout', 'api/*'],
 'allowed_origins' => ['https://airquality.up.railway.app'],
 'supports_credentials' => true,
 

@@ -39,6 +39,7 @@ console.log(window.userId);
 if (window.userId) {
     console.log(window.userId);
     const userId = window.userId;
+    console.log('Listening for real-time updates on user ID:', userId);
 window.Echo.private(`air-quality.${userId}`)
     .listen('.AirQualityUpdated', (e) => {
         console.log('Realtime data:', e.data);
