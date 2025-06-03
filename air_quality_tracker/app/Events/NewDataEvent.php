@@ -9,6 +9,7 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 
 class NewDataEvent implements ShouldBroadcast
 {
@@ -30,6 +31,7 @@ class NewDataEvent implements ShouldBroadcast
      */
     public function broadcastOn(): array
     {
+        Log::info('Broadcasting event for user_id: ' . $this->data->user_id);
         return [
             new PrivateChannel('air-quality.' . $this->data->user_id),
         ];

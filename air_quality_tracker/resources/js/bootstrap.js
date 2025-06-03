@@ -35,8 +35,9 @@ window.Echo = new Echo({
 });
 
 
-
+console.log(window.userId);
 if (window.userId) {
+    console.log(window.userId);
     const userId = window.userId;
 window.Echo.private(`air-quality.${userId}`)
     .listen('.AirQualityUpdated', (e) => {
