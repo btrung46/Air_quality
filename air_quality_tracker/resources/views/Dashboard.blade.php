@@ -40,15 +40,13 @@
         });
     </script>
     @if (auth()->check())
-        window.Laravel = {
-        userId: @json(auth()->user()->id)
-        };
+        window.userId = @json(auth()->user()->id);
     @endif
     @if ($check_data)
         <!-- Ensure Chart.js is loaded before using it -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script>
-            console.log(window.Laravel.userId);
+            console.log(window.userId);
             setTimeout(() => {
                 location.reload();
             }, 20 * 60 * 1000);

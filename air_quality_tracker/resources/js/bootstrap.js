@@ -34,8 +34,8 @@ window.Echo = new Echo({
 });
 
 
-if (window.laravel && window.laravel.userId) {
-window.Echo.private('air-quality.' + window.laravel.userId)
+if (window.userId) {
+window.Echo.private('air-quality.${window.userId}')
     .listen('.AirQualityUpdated', (e) => {
         console.log('Realtime data:', e.data);
         // Giả sử e.data có dạng { temperature, humidity, PM2_5, CO, CO2, O3, TVOC }
