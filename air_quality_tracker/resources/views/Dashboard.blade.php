@@ -41,6 +41,9 @@
     </script>
     @if ($check_data)
         <script>
+            window.Laravel = {
+                userId: @json(auth()->user()->id)
+            };
             setTimeout(() => {
                 location.reload();
             }, 20 * 60 * 1000);
