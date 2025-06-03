@@ -40,11 +40,14 @@
         });
     </script>
     @if (auth()->check())
-        window.userId = @json(auth()->user()->id);
-    @endif
+<script>
+    window.userId = @json(auth()->user()->id);
+</script>
+@endif
+
     @if ($check_data)
         <!-- Ensure Chart.js is loaded before using it -->
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></>
         <script>
             console.log(window.userId);
             setTimeout(() => {
