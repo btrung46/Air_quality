@@ -14,12 +14,11 @@ return [
     | To learn more: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
     |
     */
-
-'paths' => ['api/*', 'broadcasting/auth', 'sanctum/csrf-cookie'], // ✅ thêm broadcasting/auth
+    'paths' => ['broadcasting/auth', 'login', 'logout', 'sanctum/csrf-cookie', 'api/*'],
+'allowed_origins' => ['https://airquality.up.railway.app'],
+'supports_credentials' => true,
 
 'allowed_methods' => ['*'],
-
-'allowed_origins' => ['https://airquality.up.railway.app'], // ✅ domain chính xác
 
 'allowed_origins_patterns' => [],
 
@@ -28,8 +27,6 @@ return [
 'exposed_headers' => [],
 
 'max_age' => 0,
-
-'supports_credentials' => true, // ✅ để Laravel gửi session theo request
 
 
 ];
