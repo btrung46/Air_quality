@@ -34,7 +34,7 @@ window.Echo = new Echo({
 });
 
 
-
+if (window.laravel && window.laravel.userId) {
 window.Echo.private('air-quality.${userId}')
     .listen('.AirQualityUpdated', (e) => {
         console.log('Realtime data:', e.data);
@@ -106,3 +106,4 @@ window.Echo.private('air-quality.${userId}')
             }
         }
     });
+}

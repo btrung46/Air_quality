@@ -39,11 +39,15 @@
             }
         });
     </script>
-    @if ($check_data)
+    @if (auth()->check())
         <script>
             window.Laravel = {
                 userId: @json(auth()->user()->id)
             };
+        </script>
+    @endif
+    @if ($check_data)
+        <script>
             setTimeout(() => {
                 location.reload();
             }, 20 * 60 * 1000);
@@ -214,7 +218,7 @@
                 });
 
                 // Lưu lại biểu đồ vào biến toàn cục
-                window.myCharts[canvasId] = newChart;
+                window.myCharts[canvasId] scripthart;
             }
         </script>
     @endif
