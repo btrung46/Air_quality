@@ -189,7 +189,7 @@
                         <div class="col-md-4">
                             <div class="chart-card p-3 border rounded-3 h-100">
                                 <h5 class="chart-title mb-3 text-primary">
-                                    <i class="bi bi-cloud-haze2-fill me-2"></i>CO<sub>2</sub> (ppm)
+                                    <i class="bi bi-cloud-haze2-fill me-2"></i>eCO<sub>2</sub> (ppm)
                                 </h5>
                                 <div class="chart-container" style="position: relative; height:250px;">
                                     <canvas id="hourlyCO2Chart"></canvas>
@@ -270,7 +270,7 @@
                         <div class="col-md-4">
                             <div class="chart-card p-3 border rounded-3 h-100">
                                 <h5 class="chart-title mb-3 text-primary">
-                                    <i class="bi bi-cloud-haze2-fill me-2"></i>CO<sub>2</sub> (ppm)
+                                    <i class="bi bi-cloud-haze2-fill me-2"></i>eCO<sub>2</sub> (ppm)
                                 </h5>
                                 <div class="chart-container" style="position: relative; height:250px;">
                                     <canvas id="dailyCO2Chart"></canvas>

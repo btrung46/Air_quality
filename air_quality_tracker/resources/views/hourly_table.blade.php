@@ -19,7 +19,7 @@
                             <th scope="col" class="fw-semibold">CO (ppm)</th>
                             <th scope="col" class="fw-semibold">O3 (ppb)</th>
                             <th scope="col" class="fw-semibold">PM2.5 (μg/m³)</th>
-                            <th scope="col" class="fw-semibold">CO2 (ppm)</th>
+                            <th scope="col" class="fw-semibold">eCO2 (ppm)</th>
                             <th scope="col" class="fw-semibold">TVOC (ppb)</th>
                         </tr>
                     </thead>

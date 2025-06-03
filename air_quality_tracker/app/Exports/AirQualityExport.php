@@ -137,7 +137,7 @@ class AirQualityExport implements FromCollection, WithHeadings
             'CO',
             'O3',
             'PM2.5',
-            'CO2',
+            'eCO2',
             'TVOC',
             'AQI',
             'Status'
