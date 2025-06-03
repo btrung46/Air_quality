@@ -47,7 +47,7 @@
 
     @if ($check_data)
         <!-- Ensure Chart.js is loaded before using it -->
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script>
             console.log(window.userId);
             setTimeout(() => {
