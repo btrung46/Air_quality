@@ -97,10 +97,10 @@
                     @json($dailyValues['pm25']).reverse(), 'rgba(153, 102, 255, 0.2)', 'rgba(153, 102, 255, 1)',
                     'line');
 
-                createChart('hourlyCO2Chart', 'CO2 (ppm) - Hourly', @json($hourlyLabels),
+                createChart('hourlyCO2Chart', 'eCO2 (ppm) - Hourly', @json($hourlyLabels),
                     @json($hourlyValues['co2']).reverse(), 'rgba(219, 112, 147, 0.2)', 'rgba(219, 112, 147, 1)',
                     'line');
-                createChart('dailyCO2Chart', 'CO2 (ppm) - Daily', @json($dailyLabels),
+                createChart('dailyCO2Chart', 'eCO2 (ppm) - Daily', @json($dailyLabels),
                     @json($dailyValues['co2']).reverse(), 'rgba(219, 112, 147, 0.2)', 'rgba(219, 112, 147, 1)',
                     'line');
 
