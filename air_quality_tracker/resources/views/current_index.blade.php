@@ -81,7 +81,7 @@
                     <i class="bi bi-cloud-haze2-fill"></i>
                 </div>
                 <div class="metric-details">
-                    <h5>Carbon Dioxide (CO<sub>2</sub>)</h5>
+                    <h5>Equivalent Carbon Dioxide (eCO<sub>2</sub>)</h5>
                     <div class="metric-value" id='co2'>{{ $current_dat->CO2 }}<span class="unit">ppm</span>
                     </div>
                 </div>
