@@ -40,14 +40,17 @@
         });
     </script>
     @if (auth()->check())
+        window.Laravel = {
+        userId: @json(auth()->user()->id)
+        };
+    @endif
+    @if ($check_data)
+        <!-- Ensure Chart.js is loaded before using it -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script>
             window.Laravel = {
                 userId: @json(auth()->user()->id)
             };
-        </script>
-    @endif
-    @if ($check_data)
-        <script>
             setTimeout(() => {
                 location.reload();
             }, 20 * 60 * 1000);
@@ -218,7 +221,7 @@
                 });
 
                 // Lưu lại biểu đồ vào biến toàn cục
-                window.myCharts[canvasId] scripthart;
+                window.myCharts[canvasId] = newChart;
             }
         </script>
     @endif
