@@ -31,7 +31,7 @@ class NewDataEvent implements ShouldBroadcast
     public function broadcastOn(): array
     {
         return [
-            new Channel('air-quality'),
+            new PrivateChannel('air-quality.' . $this->data->user_id),
         ];
     }
     public function broadcastAs()

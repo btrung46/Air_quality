@@ -126,6 +126,11 @@
 
 </body>
 </html>
+<script> 
+window.Laravel = {
+        userId: @json(auth()->user()->id)
+    };
+  </script>
 <style>
     /* Header Styles */
 :root {

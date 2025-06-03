@@ -42,7 +42,6 @@
     @if ($check_data)
         <script>
             setTimeout(() => {
-                
                 location.reload();
             }, 20 * 60 * 1000);
 

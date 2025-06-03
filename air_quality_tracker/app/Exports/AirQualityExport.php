@@ -37,15 +37,15 @@ class AirQualityExport implements FromCollection, WithHeadings
             ->orderBy(DB::raw('MAX(created_at)'))
             ->get()
             ->map(function ($item) {
-                // Tính AQI cho các chỉ số trung bình
+    
                 $aqi_pm25 = $this->calculateAQI($item->avg_PM2_5, 'PM2_5');
                 $aqi_o3 = $this->calculateAQI($item->avg_O3, 'O3');
                 $aqi_co = $this->calculateAQI($item->avg_CO, 'CO');
 
-                // Lấy AQI cao nhất
+                
                 $aqi = max($aqi_pm25, $aqi_o3, $aqi_co);
 
-                // Xác định trạng thái AQI
+               
                 $status = $this->getAQIStatus($aqi);
 
                 return [
@@ -63,7 +63,7 @@ class AirQualityExport implements FromCollection, WithHeadings
             });
     }
 
-    // Tính AQI từ một chỉ số (PM2.5, O3, CO...)
+    
     private function calculateAQI($concentration, $pollutant = null)
     {
         // Bảng ngưỡng AQI theo EPA
@@ -74,13 +74,13 @@ class AirQualityExport implements FromCollection, WithHeadings
                 'I_low' => [0, 51, 101, 151, 201, 301, 401],
                 'I_high' => [50, 100, 150, 200, 300, 400, 500]
             ],
-            'O3' => [ // O3 (8-hour average, ppb)
+            'O3' => [ 
                 'C_low' => [0, 55, 71, 86, 106, 201],
                 'C_high' => [54, 70, 85, 105, 200, 605],
                 'I_low' => [0, 51, 101, 151, 201, 301],
                 'I_high' => [50, 100, 150, 200, 300, 500]
             ],
-            'CO' => [ // CO (8-hour average, ppm)
+            'CO' => [ 
                 'C_low' => [0.0, 4.5, 9.5, 12.5, 15.5, 30.5, 40.5],
                 'C_high' => [4.4, 9.4, 12.4, 15.4, 30.4, 40.4, 50.4],
                 'I_low' => [0, 51, 101, 151, 201, 301, 401],
@@ -88,7 +88,7 @@ class AirQualityExport implements FromCollection, WithHeadings
             ]
         ];
 
-        // Kiểm tra chất ô nhiễm hợp lệ
+        
         if (!$pollutant || !isset($aqiBreakpoints[$pollutant])) {
             return 0;
         }
@@ -96,7 +96,7 @@ class AirQualityExport implements FromCollection, WithHeadings
         $breakpoints = $aqiBreakpoints[$pollutant];
         $C = floatval($concentration);
 
-        // Tìm khoảng ngưỡng phù hợp
+        
         for ($i = 0; $i < count($breakpoints['C_low']); $i++) {
             if ($C >= $breakpoints['C_low'][$i] && $C <= $breakpoints['C_high'][$i]) {
                 $I_low = $breakpoints['I_low'][$i];
@@ -104,14 +104,14 @@ class AirQualityExport implements FromCollection, WithHeadings
                 $C_low = $breakpoints['C_low'][$i];
                 $C_high = $breakpoints['C_high'][$i];
 
-                // Công thức tính AQI
+                
                 $aqi = (($I_high - $I_low) / ($C_high - $C_low)) * ($C - $C_low) + $I_low;
                 return round($aqi, 2);
             }
         }
     }
 
-    // Xác định trạng thái AQI
+    
     private function getAQIStatus($aqi)
     {
         if ($aqi <= 50) {
